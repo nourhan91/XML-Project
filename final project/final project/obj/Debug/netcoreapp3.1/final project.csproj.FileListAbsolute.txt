@@ -1,0 +1,15 @@
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.exe
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.deps.json
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.runtimeconfig.json
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.runtimeconfig.dev.json
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.dll
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\bin\Debug\netcoreapp3.1\final project.pdb
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.csprojAssemblyReference.cache
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final_project.Form1.resources
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.csproj.GenerateResource.cache
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.AssemblyInfoInputs.cache
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.AssemblyInfo.cs
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.csproj.CoreCompileInputs.cache
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.dll
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.pdb
+E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.genruntimeconfig.cache
