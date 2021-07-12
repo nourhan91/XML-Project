@@ -1,0 +1,16 @@
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.exe
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.deps.json
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.runtimeconfig.json
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.runtimeconfig.dev.json
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.dll
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ref\ProjectThree.dll
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\bin\Debug\net5.0\ProjectThree.pdb
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.csproj.AssemblyReference.cache
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.AssemblyInfoInputs.cache
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.AssemblyInfo.cs
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.csproj.CoreCompileInputs.cache
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.dll
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ref\ProjectThree.dll
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.pdb
+C:\Users\Haidy\Downloads\DS_Project\ProjectThree\obj\Debug\net5.0\ProjectThree.genruntimeconfig.cache

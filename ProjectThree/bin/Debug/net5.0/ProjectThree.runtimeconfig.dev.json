@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Haidy\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Haidy\\.nuget\\packages"
+    ]
+  }
+}
