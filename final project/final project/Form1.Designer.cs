@@ -34,19 +34,25 @@ namespace final_project
             this.choose_label = new System.Windows.Forms.Label();
             this.write_label = new System.Windows.Forms.Label();
             this.XML_file_location = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Take_request = new System.Windows.Forms.TabPage();
+            this.Display_files = new System.Windows.Forms.TabPage();
+            this.show_output = new System.Windows.Forms.Button();
+            this.show_input = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabControl1.SuspendLayout();
+            this.Take_request.SuspendLayout();
+            this.Display_files.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Location = new System.Drawing.Point(759, 306);
+            this.button1.Location = new System.Drawing.Point(643, 228);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 43);
+            this.button1.Size = new System.Drawing.Size(197, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "Insert";
             this.button1.UseVisualStyleBackColor = true;
@@ -60,12 +66,10 @@ namespace final_project
             this.choosereq.Items.AddRange(new object[] {
             "Check cosistancy",
             "Check indentation",
-            "Convert XML to JSON",
-            "Show o/p XML file",
-            "Show I/P XML file",
             "Minify xml file",
+            "Convert XML to JSON",
             "Compress XML file"});
-            this.choosereq.Location = new System.Drawing.Point(440, 69);
+            this.choosereq.Location = new System.Drawing.Point(250, 26);
             this.choosereq.Name = "choosereq";
             this.choosereq.Size = new System.Drawing.Size(258, 26);
             this.choosereq.TabIndex = 1;
@@ -76,7 +80,7 @@ namespace final_project
             this.choose_label.AutoSize = true;
             this.choose_label.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.choose_label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.choose_label.Location = new System.Drawing.Point(43, 67);
+            this.choose_label.Location = new System.Drawing.Point(7, 23);
             this.choose_label.Name = "choose_label";
             this.choose_label.Size = new System.Drawing.Size(119, 29);
             this.choose_label.TabIndex = 2;
@@ -87,7 +91,7 @@ namespace final_project
             this.write_label.AutoSize = true;
             this.write_label.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.write_label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.write_label.Location = new System.Drawing.Point(43, 230);
+            this.write_label.Location = new System.Drawing.Point(3, 132);
             this.write_label.Name = "write_label";
             this.write_label.Size = new System.Drawing.Size(305, 29);
             this.write_label.TabIndex = 4;
@@ -96,66 +100,105 @@ namespace final_project
             // 
             // XML_file_location
             // 
-            this.XML_file_location.Location = new System.Drawing.Point(440, 225);
+            this.XML_file_location.Location = new System.Drawing.Point(347, 132);
             this.XML_file_location.Name = "XML_file_location";
             this.XML_file_location.Size = new System.Drawing.Size(356, 26);
             this.XML_file_location.TabIndex = 5;
             this.XML_file_location.TextChanged += new System.EventHandler(this.XML_file_location_TextChanged);
             // 
-            // label1
+            // tabControl1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 331);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.tabControl1.Controls.Add(this.Take_request);
+            this.tabControl1.Controls.Add(this.Display_files);
+            this.tabControl1.Location = new System.Drawing.Point(3, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1152, 683);
+            this.tabControl1.TabIndex = 6;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // textBox1
+            // Take_request
             // 
-            this.textBox1.Location = new System.Drawing.Point(440, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 26);
-            this.textBox1.TabIndex = 7;
+            this.Take_request.Controls.Add(this.choose_label);
+            this.Take_request.Controls.Add(this.button1);
+            this.Take_request.Controls.Add(this.XML_file_location);
+            this.Take_request.Controls.Add(this.write_label);
+            this.Take_request.Controls.Add(this.choosereq);
+            this.Take_request.Location = new System.Drawing.Point(4, 27);
+            this.Take_request.Name = "Take_request";
+            this.Take_request.Padding = new System.Windows.Forms.Padding(3);
+            this.Take_request.Size = new System.Drawing.Size(1144, 652);
+            this.Take_request.TabIndex = 0;
+            this.Take_request.Text = "Take_request";
+            this.Take_request.UseVisualStyleBackColor = true;
+            this.Take_request.Click += new System.EventHandler(this.Take_request_Click);
             // 
-            // label2
+            // Display_files
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Rockwell", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(43, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 28);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Please Enter file name";
+            this.Display_files.Controls.Add(this.show_output);
+            this.Display_files.Controls.Add(this.show_input);
+            this.Display_files.Controls.Add(this.richTextBox2);
+            this.Display_files.Controls.Add(this.richTextBox1);
+            this.Display_files.Location = new System.Drawing.Point(4, 27);
+            this.Display_files.Name = "Display_files";
+            this.Display_files.Padding = new System.Windows.Forms.Padding(3);
+            this.Display_files.Size = new System.Drawing.Size(1144, 652);
+            this.Display_files.TabIndex = 1;
+            this.Display_files.Text = "Display_files";
+            this.Display_files.UseVisualStyleBackColor = true;
+            this.Display_files.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // textBox2
+            // show_output
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 366);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(924, 26);
-            this.textBox2.TabIndex = 9;
+            this.show_output.Location = new System.Drawing.Point(789, 9);
+            this.show_output.Name = "show_output";
+            this.show_output.Size = new System.Drawing.Size(117, 29);
+            this.show_output.TabIndex = 3;
+            this.show_output.Text = "show_output";
+            this.show_output.UseVisualStyleBackColor = true;
+            this.show_output.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // show_input
+            // 
+            this.show_input.Location = new System.Drawing.Point(194, 9);
+            this.show_input.Name = "show_input";
+            this.show_input.Size = new System.Drawing.Size(119, 29);
+            this.show_input.TabIndex = 2;
+            this.show_input.Text = "Show_input";
+            this.show_input.UseVisualStyleBackColor = true;
+            this.show_input.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(554, 44);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(587, 605);
+            this.richTextBox2.TabIndex = 1;
+            this.richTextBox2.Text = "";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(5, 44);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(543, 605);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 450);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.XML_file_location);
-            this.Controls.Add(this.write_label);
-            this.Controls.Add(this.choose_label);
-            this.Controls.Add(this.choosereq);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1167, 695);
+            this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "Form1";
             this.Text = "XML_Project";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.Take_request.ResumeLayout(false);
+            this.Take_request.PerformLayout();
+            this.Display_files.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -166,10 +209,13 @@ namespace final_project
         private System.Windows.Forms.Label choose_label;
         private System.Windows.Forms.Label write_label;
         private System.Windows.Forms.TextBox XML_file_location;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Take_request;
+        private System.Windows.Forms.TabPage Display_files;
+        private System.Windows.Forms.Button show_output;
+        private System.Windows.Forms.Button show_input;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
