@@ -128,22 +128,6 @@ namespace ProjectThree
 
         }
 
-        static string addIndentation(int indent)
-        {
-            string str = " ";
-            if (indent == 0)
-            {
-                return "";
-            }
-            while (indent != 0)
-            {
-                str = str + " ";
-                indent--;
-            }
-            return str;
-
-        }
-
         static void resizeArraytoDouble(ref string[] arr, int Length)
         {
             string[] newarr = new string[Length * 2];
