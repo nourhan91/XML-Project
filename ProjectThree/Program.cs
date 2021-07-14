@@ -138,9 +138,9 @@ namespace ProjectThree
             arr = newarr;
         }
 
-        public static void makeList(ref List<KeyValuePair<long, KeyValuePair<string, string>>> elerror, ref List<string> output)
+        public static void makeList(ref List<KeyValuePair<long, KeyValuePair<string, string>>> error, ref List<string> output)
         {
-            foreach (var item in elerror)
+            foreach (var item in error)
             {
                 string x = "Line number : " + item.Key + " , " + "Error : " + item.Value.Key + " , " + "Error type : " + item.Value.Value;
                 output.Add(x);
