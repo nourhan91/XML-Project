@@ -1,4 +1,17 @@
-﻿using System;
+﻿///\\\
+/*fixed the length method.
+add tag attribute feild
+, parse it and converted to json format correcttly.
+fixed xmlparser and added extra checks.
+fixed json printer method adding indentation .
+and some alot more checks for a correct format printing.
+adding some helper methods:
+one for indentation,
+and another to convert xml string array to list.
+*/
+///\\\
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
