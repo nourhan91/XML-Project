@@ -1,0 +1,14 @@
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\bin\Debug\test.exe.config
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\bin\Debug\test.exe
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\bin\Debug\test.pdb
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\obj\Debug\test.csprojAssemblyReference.cache
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\obj\Debug\test.exe
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\test\obj\Debug\test.pdb
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\bin\Debug\test.exe.config
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\bin\Debug\test.exe
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\bin\Debug\test.pdb
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\obj\Debug\test.csprojAssemblyReference.cache
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\obj\Debug\test.csproj.CoreCompileInputs.cache
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\obj\Debug\test.exe
+D:\Salma\college\3rd CSE\2end-term\DataStructures\XML project\indentation\obj\Debug\test.pdb
