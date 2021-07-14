@@ -157,7 +157,6 @@ namespace ProjectThree
             string fileDestination = @"C:\Users\Haidy\Downloads\DS_Project\";
             string[] files = System.IO.Directory.GetFiles(fileDestination, "*.xml");
             string inputText = System.IO.File.ReadAllText(files[0]);
-            //Console.WriteLine($"[{inputText[0]}]");
 
             #region Fields
             //Stack for Tags, to check for consistency.
@@ -170,8 +169,6 @@ namespace ProjectThree
             //if it is missing
             int OpeningTagNumber = 0;
 
-            //we remove the newline characters in the string in order to deal with it better
-            //this can also be using in minifying the string
 
             string sentence = "";
             int loopIndex = 0;
@@ -179,6 +176,8 @@ namespace ProjectThree
             List<int> lineLengths = new List<int>();
             int lineLength = 0;
             #endregion
+
+
             //removing spaces from the input string in order to deal with it better.
             //we also calculate each line length along the way because it will help us
             //in visualizing the errors.
