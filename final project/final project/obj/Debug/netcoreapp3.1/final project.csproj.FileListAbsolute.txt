@@ -13,3 +13,18 @@ E:\3rd year computer 2nd term\Data structure\final project\final project\final p
 E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.dll
 E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.pdb
 E:\3rd year computer 2nd term\Data structure\final project\final project\final project\obj\Debug\netcoreapp3.1\final project.genruntimeconfig.cache
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.exe
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.deps.json
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.runtimeconfig.json
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.runtimeconfig.dev.json
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.dll
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\bin\Debug\netcoreapp3.1\final project.pdb
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.csproj.AssemblyReference.cache
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final_project.Form1.resources
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.csproj.GenerateResource.cache
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.AssemblyInfoInputs.cache
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.AssemblyInfo.cs
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.csproj.CoreCompileInputs.cache
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.dll
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.pdb
+C:\Users\Haidy\Downloads\DS_Project\Final\final project\final project\obj\Debug\netcoreapp3.1\final project.genruntimeconfig.cache

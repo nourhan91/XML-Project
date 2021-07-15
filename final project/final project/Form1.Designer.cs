@@ -66,11 +66,12 @@ namespace final_project
             // 
             // choosereq
             // 
+            this.choosereq.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.choosereq.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.choosereq.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.choosereq.FormattingEnabled = true;
             this.choosereq.Items.AddRange(new object[] {
-            "Check cosistancy",
+            "Check Consistency",
             "Check indentation",
             "Minify xml file",
             "Convert XML to JSON",
@@ -78,7 +79,7 @@ namespace final_project
             "Decompress XML file"});
             this.choosereq.Location = new System.Drawing.Point(250, 26);
             this.choosereq.Name = "choosereq";
-            this.choosereq.Size = new System.Drawing.Size(258, 26);
+            this.choosereq.Size = new System.Drawing.Size(258, 22);
             this.choosereq.TabIndex = 1;
             this.choosereq.SelectedIndexChanged += new System.EventHandler(this.choosereq_SelectedIndexChanged);
             // 
@@ -87,11 +88,12 @@ namespace final_project
             this.choose_label.AutoSize = true;
             this.choose_label.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.choose_label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.choose_label.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
             this.choose_label.Location = new System.Drawing.Point(7, 23);
             this.choose_label.Name = "choose_label";
-            this.choose_label.Size = new System.Drawing.Size(182, 29);
+            this.choose_label.Size = new System.Drawing.Size(142, 22);
             this.choose_label.TabIndex = 2;
-            this.choose_label.Text = "choose_Operation";
+            this.choose_label.Text = "Choose Operation";
             // 
             // write_label
             // 
@@ -100,7 +102,7 @@ namespace final_project
             this.write_label.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.write_label.Location = new System.Drawing.Point(3, 132);
             this.write_label.Name = "write_label";
-            this.write_label.Size = new System.Drawing.Size(305, 29);
+            this.write_label.Size = new System.Drawing.Size(241, 22);
             this.write_label.TabIndex = 4;
             this.write_label.Text = "please write XML file location";
             this.write_label.Click += new System.EventHandler(this.label1_Click);
@@ -109,7 +111,7 @@ namespace final_project
             // 
             this.XML_file_location.Location = new System.Drawing.Point(347, 132);
             this.XML_file_location.Name = "XML_file_location";
-            this.XML_file_location.Size = new System.Drawing.Size(356, 26);
+            this.XML_file_location.Size = new System.Drawing.Size(356, 22);
             this.XML_file_location.TabIndex = 5;
             this.XML_file_location.TextChanged += new System.EventHandler(this.XML_file_location_TextChanged);
             // 
@@ -134,10 +136,10 @@ namespace final_project
             this.Take_request.Controls.Add(this.XML_file_location);
             this.Take_request.Controls.Add(this.write_label);
             this.Take_request.Controls.Add(this.choosereq);
-            this.Take_request.Location = new System.Drawing.Point(4, 27);
+            this.Take_request.Location = new System.Drawing.Point(4, 23);
             this.Take_request.Name = "Take_request";
             this.Take_request.Padding = new System.Windows.Forms.Padding(3);
-            this.Take_request.Size = new System.Drawing.Size(1200, 829);
+            this.Take_request.Size = new System.Drawing.Size(1200, 833);
             this.Take_request.TabIndex = 0;
             this.Take_request.Text = "Take_request";
             this.Take_request.UseVisualStyleBackColor = true;
@@ -150,7 +152,7 @@ namespace final_project
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(7, 192);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 27);
+            this.label1.Size = new System.Drawing.Size(274, 22);
             this.label1.TabIndex = 10;
             this.label1.Text = "Please Write XML output Location";
             // 
@@ -158,7 +160,7 @@ namespace final_project
             // 
             this.XML_output_location.Location = new System.Drawing.Point(347, 192);
             this.XML_output_location.Name = "XML_output_location";
-            this.XML_output_location.Size = new System.Drawing.Size(356, 26);
+            this.XML_output_location.Size = new System.Drawing.Size(356, 22);
             this.XML_output_location.TabIndex = 9;
             this.XML_output_location.TextChanged += new System.EventHandler(this.XML_output_location_TextChanged);
             // 
@@ -169,10 +171,10 @@ namespace final_project
             this.Display_files.Controls.Add(this.show_input);
             this.Display_files.Controls.Add(this.richTextBox2);
             this.Display_files.Controls.Add(this.richTextBox1);
-            this.Display_files.Location = new System.Drawing.Point(4, 27);
+            this.Display_files.Location = new System.Drawing.Point(4, 23);
             this.Display_files.Name = "Display_files";
             this.Display_files.Padding = new System.Windows.Forms.Padding(3);
-            this.Display_files.Size = new System.Drawing.Size(1200, 829);
+            this.Display_files.Size = new System.Drawing.Size(1200, 833);
             this.Display_files.TabIndex = 1;
             this.Display_files.Text = "Display_files";
             this.Display_files.UseVisualStyleBackColor = true;
@@ -230,9 +232,9 @@ namespace final_project
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.Errors_list);
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1200, 829);
+            this.tabPage1.Size = new System.Drawing.Size(1200, 833);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Show Errors";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -248,9 +250,9 @@ namespace final_project
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 872);
+            this.ClientSize = new System.Drawing.Size(1215, 749);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "Form1";
