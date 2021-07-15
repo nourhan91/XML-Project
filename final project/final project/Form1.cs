@@ -21,21 +21,22 @@ namespace final_project
             InitializeComponent();
         }
 
-        
+        //global variables 
+
         string secondArg; string xmlString;
-        int minified_output_file = 0;
-        int consistancy_output_file = 0;
-        int compress_XML_file = 0;
-        int indentation_flag = 0;
-        int Decompress_XML_file = 0;
-        int XML_TO_JSON = 0;
-        string[] consistancy_arr;
-        string consistancy;
-        List<int> compressed_XML_file = new List <int>();
-        string compressed_output="";
-        string Decompressed_output;
-        string xml_formating;
-        string formating_and_minified;
+        int minified_output_file = 0;                                //flag for minified_output_file
+        int consistancy_output_file = 0;                            //flag for consistancy_output_file
+        int compress_XML_file = 0;                                 //flag for compress_XML_file
+        int indentation_flag = 0;                                 // flag for indentation_flag
+        int Decompress_XML_file = 0;                             //flag for Decompress_XML_file
+        int XML_TO_JSON = 0;                                    //flag for  XML_TO_JSON
+        string[] consistancy_arr;                              //putput array after checking consistancy
+        string consistancy;                                   // output string after checking consistancy
+        List<int> compressed_XML_file = new List <int>();    // output list after compress xml string
+        string compressed_output="";                         //convert list to string after compression
+        string Decompressed_output;                          //output string after decompress list
+        string xml_formating;                               //output xml string after formatting it (add indentation)  
+        string formating_and_minified;                     //consistant and minified xml string
         List<KeyValuePair<long, KeyValuePair<string, string>>> errorList = new List<KeyValuePair<long, KeyValuePair<string, string>>>();
 
 
@@ -51,7 +52,7 @@ namespace final_project
                 Decompress_XML_file = 0;
                 XML_TO_JSON = 0;
             }
-            else if (choosereq.SelectedItem.ToString() == "Check Consistency")
+            else if (choosereq.SelectedItem.ToString() == "Check cosistancy")
             {
                 consistancy_output_file = 1;
                 minified_output_file = 0;
@@ -130,8 +131,8 @@ namespace final_project
                 CheckConsistency(ref consistancy_arr, xmlString, ref consistancy, ref errorList);
                 formating_and_minified = minify_XML(consistancy, output_file_location);
                 //CheckConsistency(ref consistancy_arr, xmlString, ref consistancy, ref errorList);
-                File.WriteAllText(output_file_location + "\\consistant_XML_file.xml", formating_and_minified);
-                xml_formating = XML_Formating(output_file_location + "\\consistant_XML_file.xml", output_file_location);
+                File.WriteAllText(output_file_location + "\\consistant_and_minified_XML_file.xml", formating_and_minified);
+                xml_formating = XML_Formating(output_file_location + "\\consistant_and_minified_XML_file.xml", output_file_location);
             }
             else if (compress_XML_file == 1)
             {
@@ -231,47 +232,57 @@ namespace final_project
 
         private void button2_Click(object sender, EventArgs e)                      //show input file
         {
-            if (minified_output_file == 1)
-                richTextBox1.Text = xmlString;
-            else if (consistancy_output_file == 1)
-                richTextBox1.Text = xmlString;
-            else if (indentation_flag == 1)
-                richTextBox1.Text = xmlString;
-            else if(compress_XML_file==1)
-                richTextBox1.Text = xmlString;
-            else if(Decompress_XML_file == 1)
-                richTextBox1.Text = xmlString;
-            else if(XML_TO_JSON==1)
-                richTextBox1.Text = xmlString;
+            if (!(string.IsNullOrEmpty(richTextBox1.Text)))
+                richTextBox1.Clear();
+            
+            
+                if (minified_output_file == 1)
+                    richTextBox1.Text = xmlString;
+                else if (consistancy_output_file == 1)
+                    richTextBox1.Text = xmlString;
+                else if (indentation_flag == 1)
+                    richTextBox1.Text = xmlString;
+                else if (compress_XML_file == 1)
+                    richTextBox1.Text = xmlString;
+                else if (Decompress_XML_file == 1)
+                    richTextBox1.Text = xmlString;
+                else if (XML_TO_JSON == 1)
+                    richTextBox1.Text = xmlString;
+            
         }
         private void button3_Click(object sender, EventArgs e)                     //show output file
         {
-            if (minified_output_file == 1)
-                richTextBox2.Text = secondArg;
-            else if (consistancy_output_file == 1)
-            {
-                richTextBox2.Text = consistancy;
-                List<string> finalList;
+            if (!(string.IsNullOrEmpty(richTextBox2.Text)))
+                richTextBox2.Clear();
+            
+            
+                if (minified_output_file == 1)
+                    richTextBox2.Text = secondArg;
+                else if (consistancy_output_file == 1)
+                {
+                    richTextBox2.Text = consistancy;
+                    List<string> finalList;
 
-                finalList = new List<string>();
+                    finalList = new List<string>();
 
-                makeList(ref errorList, ref finalList);
-                Errors_list.Lines = finalList.ToArray();
-            }
-            else if (indentation_flag == 1)
-                richTextBox2.Text = xml_formating;
-            else if (compress_XML_file == 1)
-                richTextBox2.Text = compressed_output;
-            else if (Decompress_XML_file == 1)
-                richTextBox2.Text = Decompressed_output;
-            else if (XML_TO_JSON == 1)
-            {
-                string file_location = XML_file_location.Text;
-                string output_file_location = XML_output_location.Text;
-                string[] files = System.IO.Directory.GetFiles(output_file_location, "*.txt"); //get all files in directory with xml extension
-               string json_string = System.IO.File.ReadAllText(files[0]);                                          // xmlString = System.IO.File.ReadAllText(files[0]);  // get first xml file in files array and convert
-                richTextBox2.Text = json_string; 
-            }
+                    makeList(ref errorList, ref finalList);
+                    Errors_list.Lines = finalList.ToArray();
+                }
+                else if (indentation_flag == 1)
+                    richTextBox2.Text = xml_formating;
+                else if (compress_XML_file == 1)
+                    richTextBox2.Text = compressed_output;
+                else if (Decompress_XML_file == 1)
+                    richTextBox2.Text = Decompressed_output;
+                else if (XML_TO_JSON == 1)
+                {
+                    string file_location = XML_file_location.Text;
+                    string output_file_location = XML_output_location.Text;
+                    string[] files = System.IO.Directory.GetFiles(output_file_location, "*.txt"); //get all files in directory with xml extension
+                    string json_string = System.IO.File.ReadAllText(files[0]);                                          // xmlString = System.IO.File.ReadAllText(files[0]);  // get first xml file in files array and convert
+                    richTextBox2.Text = json_string;
+                }
+            
         }
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
@@ -281,11 +292,11 @@ namespace final_project
         {
             richTextBox1.Clear();
             richTextBox2.Clear();
-            minified_output_file = 0;
-            consistancy_output_file = 0;
-            indentation_flag = 0;
-            compress_XML_file = 0;
-            Decompress_XML_file = 0;
+           // minified_output_file = 0;
+           // consistancy_output_file = 0;
+           // indentation_flag = 0;
+            //compress_XML_file = 0;
+            //Decompress_XML_file = 0;
         }
        
         private void XML_output_location_TextChanged(object sender, EventArgs e)
@@ -323,7 +334,7 @@ namespace final_project
 
 
         /*----------------------------------------------------------------------------*/
-        /*------------------------consistency code------------------------------------*/
+        /*------------------------consistancy code------------------------------------*/
         class StackElement
         {
             string Sentence;
@@ -840,8 +851,8 @@ namespace final_project
             #endregion
 
 
-
             #region finishing
+            //After finishing, if there are tags still in stack we add them
             while (Tagstack.Count != 0)
             {
                 temp = Tagstack.Peek().getSentence();
@@ -850,35 +861,32 @@ namespace final_project
 
                 addtoList(ref errorList, LineNum, temp.Substring(0, 1) + "/" + temp.Substring(1), "Missing Closing Tag");
 
-                if (XML_array[index - 1][0] != '<')
-                {
-                    resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
-                    XML_index++;
-                }
-                else
-                {
-                    if (XML_index != XML_array.Length)
-                    {
-                        XML_array[XML_index] = temp.Substring(0, 1) + "/" + temp.Substring(1); ;
-                        XML_index++;
-                    }
-                    else
-                    {
-                        resizeArraytoDouble(ref XML_array, XML_array.Length);
-                        XML_array[XML_index] = temp.Substring(0, 1) + "/" + temp.Substring(1); ;
-                        XML_index++;
-                    }
-
-                }
-
-                //resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
+                resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
                 OpeningTagNumber++;
-
+                int current_index = Tagstack.Peek().getIndex() + 1;
+                string current_Tag = Tagstack.Peek().getSentence();
                 Tagstack.Pop();
+                if (Tagstack.Count != 0)
+                {
+                    int ind = Tagstack.Peek().getIndex();
+                    if (XML_array[ind - 1][0] == '<')
+                    {
+                        if (current_Tag == XML_array[XML_index])
+                        {
+                            Tagstack.Peek().setIndex(current_index);
+                        }
+                        else
+                        {
+                            Tagstack.Peek().setIndex(XML_index);
+                        }
+                    }
+                }
+                XML_index++;
             }
+
             #endregion
 
-            finalXMLString = "";
+             finalXMLString = "";
             //to group all of them again
 
             for (int i = 0; i < XML_index; i++)
