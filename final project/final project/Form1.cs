@@ -52,7 +52,7 @@ namespace final_project
                 Decompress_XML_file = 0;
                 XML_TO_JSON = 0;
             }
-            else if (choosereq.SelectedItem.ToString() == "Check cosistancy")
+            else if (choosereq.SelectedItem.ToString() == "Check Consistency")
             {
                 consistancy_output_file = 1;
                 minified_output_file = 0;
@@ -131,8 +131,8 @@ namespace final_project
                 CheckConsistency(ref consistancy_arr, xmlString, ref consistancy, ref errorList);
                 formating_and_minified = minify_XML(consistancy, output_file_location);
                 //CheckConsistency(ref consistancy_arr, xmlString, ref consistancy, ref errorList);
-                File.WriteAllText(output_file_location + "\\consistant_and_minified_XML_file.xml", formating_and_minified);
-                xml_formating = XML_Formating(output_file_location + "\\consistant_and_minified_XML_file.xml", output_file_location);
+                File.WriteAllText(output_file_location + "\\consistent_and_minified_XML_file.xml", formating_and_minified);
+                xml_formating = XML_Formating(output_file_location + "\\consistent_and_minified_XML_file.xml", output_file_location);
             }
             else if (compress_XML_file == 1)
             {
@@ -334,7 +334,7 @@ namespace final_project
 
 
         /*----------------------------------------------------------------------------*/
-        /*------------------------consistancy code------------------------------------*/
+        /*------------------------consistency code------------------------------------*/
         class StackElement
         {
             string Sentence;
@@ -850,9 +850,7 @@ namespace final_project
 
             #endregion
 
-
             #region finishing
-            //After finishing, if there are tags still in stack we add them
             while (Tagstack.Count != 0)
             {
                 temp = Tagstack.Peek().getSentence();
@@ -861,32 +859,35 @@ namespace final_project
 
                 addtoList(ref errorList, LineNum, temp.Substring(0, 1) + "/" + temp.Substring(1), "Missing Closing Tag");
 
-                resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
-                OpeningTagNumber++;
-                int current_index = Tagstack.Peek().getIndex() + 1;
-                string current_Tag = Tagstack.Peek().getSentence();
-                Tagstack.Pop();
-                if (Tagstack.Count != 0)
+                if (XML_array[index - 1][0] != '<')
                 {
-                    int ind = Tagstack.Peek().getIndex();
-                    if (XML_array[ind - 1][0] == '<')
-                    {
-                        if (current_Tag == XML_array[XML_index])
-                        {
-                            Tagstack.Peek().setIndex(current_index);
-                        }
-                        else
-                        {
-                            Tagstack.Peek().setIndex(XML_index);
-                        }
-                    }
+                    resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
+                    XML_index++;
                 }
-                XML_index++;
-            }
+                else
+                {
+                    if (XML_index != XML_array.Length)
+                    {
+                        XML_array[XML_index] = temp.Substring(0, 1) + "/" + temp.Substring(1); ;
+                        XML_index++;
+                    }
+                    else
+                    {
+                        resizeArraytoDouble(ref XML_array, XML_array.Length);
+                        XML_array[XML_index] = temp.Substring(0, 1) + "/" + temp.Substring(1); ;
+                        XML_index++;
+                    }
 
+                }
+
+                //resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
+                OpeningTagNumber++;
+
+                Tagstack.Pop();
+            }
             #endregion
 
-             finalXMLString = "";
+            finalXMLString = "";
             //to group all of them again
 
             for (int i = 0; i < XML_index; i++)
