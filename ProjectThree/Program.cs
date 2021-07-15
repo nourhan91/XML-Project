@@ -10,10 +10,23 @@ namespace ProjectThree
         string Sentence;
         int index;
 
-        public StackElement(string sen, int i)
+        int LineNumber;
+
+        public StackElement(string sen, int i, int num)
         {
             this.Sentence = sen;
             this.index = i;
+            this.LineNumber = num;
+        }
+
+        public void setLineNumber(int n)
+        {
+            this.LineNumber = n;
+        }
+
+        public int getLineNumber()
+        {
+            return this.LineNumber;
         }
 
         public void setIndex(int i)
@@ -115,22 +128,6 @@ namespace ProjectThree
 
         }
 
-        static string addIndentation(int indent)
-        {
-            string str = " ";
-            if (indent == 0)
-            {
-                return "";
-            }
-            while (indent != 0)
-            {
-                str = str + " ";
-                indent--;
-            }
-            return str;
-
-        }
-
         static void resizeArraytoDouble(ref string[] arr, int Length)
         {
             string[] newarr = new string[Length * 2];
@@ -139,57 +136,96 @@ namespace ProjectThree
                 newarr[i] = arr[i];
             }
             arr = newarr;
-
         }
+
+        public static void makeList(ref List<KeyValuePair<long, KeyValuePair<string, string>>> error, ref List<string> output)
+        {
+            foreach (var item in error)
+            {
+                string x = "Line number : " + item.Key + " , " + "Error : " + item.Value.Key + " , " + "Error type : " + item.Value.Value;
+                output.Add(x);
+            }
+        }
+        public static void addtoList(ref List<KeyValuePair<long, KeyValuePair<string, string>>> errorList, long line, string err_location, string errType)
+        {
+            errorList.Add(new KeyValuePair<long, KeyValuePair<string, string>>(line, new KeyValuePair<string, string>(err_location, errType)));
+        }
+
+
         static void Main(string[] args)
         {
             string fileDestination = @"C:\Users\Haidy\Downloads\DS_Project\";
             string[] files = System.IO.Directory.GetFiles(fileDestination, "*.xml");
             string inputText = System.IO.File.ReadAllText(files[0]);
 
+            #region Fields
             //Stack for Tags, to check for consistency.
             Stack<StackElement> Tagstack = new Stack<StackElement>();
 
+            //initializing list that will contain where errors are.
+            List<KeyValuePair<long, KeyValuePair<string, string>>> errorList = new List<KeyValuePair<long, KeyValuePair<string, string>>>();
 
             //Counter to help us predict where to add an opening tag
             //if it is missing
             int OpeningTagNumber = 0;
 
-            //we remove the newline characters in the string in order to deal with it better
-            //this can also be using in minifying the string
 
             string sentence = "";
             int loopIndex = 0;
             bool isSpace = false;
-            Console.WriteLine(inputText.Length);
+            List<int> lineLengths = new List<int>();
+            int lineLength = 0;
+            #endregion
+
+
+            //removing spaces from the input string in order to deal with it better.
+            //we also calculate each line length along the way because it will help us
+            //in visualizing the errors.
+            #region Remove space
             while (loopIndex != inputText.Length)
             {
-                if (inputText[loopIndex] == '\r' || inputText[loopIndex] == '\n')
+                if (inputText[loopIndex] == '\r')
                 {
                     loopIndex++;
-                    if(inputText[loopIndex] == ' ')
+                    if (inputText[loopIndex] == ' ')
                     {
                         isSpace = true;
                     }
                     continue;
                 }
-                if(isSpace)
+
+                if (isSpace)
                 {
-                    if(inputText[loopIndex] != ' ')
+                    if (inputText[loopIndex] != ' ')
                     {
                         isSpace = false;
                         loopIndex--;
+                        lineLength--;
                     }
                     loopIndex++;
+                    lineLength++;
                     continue;
                 }
                 sentence += inputText[loopIndex];
+                if (inputText[loopIndex] == '\n')
+                {
+                    isSpace = true;
+                    lineLengths.Add(lineLength);
+                    lineLength = 0;
+                }
+                else
+                {
+                    lineLength++;
+                }
                 loopIndex++;
             }
+            #endregion
 
             //empty array that will contain all elements of XML seperated the right way
             //we first initialize it to the length of the previous XML array
             //and if we need to resize it along the way, we will
+            #region Parser and error detector
+            #region Parser Fields
             string[] XML_array = new string[sentence.Length];
 
             //current index of the final array.
@@ -205,15 +241,27 @@ namespace ProjectThree
 
             //we assume generic structure <tag1><tag2>sentence</tag2></tag1> etc
 
-            //in case tag contains id or something, ex <book id = "1"> 
+            //in case tag contains id or something, ex <book id = "1">
             //we want to store it in final array that way but not in the tag stack
             string sentence2 = "";
             bool isLongTag = false;
 
-
+            ///index used to loop over a string
             j = 0;
+
+            //determines the line number so we can use it in case of an error
+            int LineNumber = 0;
+
+            #endregion
+            //Code for parsing the string
             while (j != sentence.Trim().Length)
             {
+                if (sentence[j] == '\n')
+                {
+                    j++;
+                    LineNumber++;
+                    continue;
+                }
 
                 //check for tag
                 if (sentence[j] == '<')
@@ -268,7 +316,7 @@ namespace ProjectThree
 
 
                         //add opening tag to stack
-                        StackElement s1 = new StackElement(temp, OpeningTagNumber);
+                        StackElement s1 = new StackElement(temp, OpeningTagNumber, LineNumber);
                         Tagstack.Push(s1);
 
 
@@ -318,8 +366,6 @@ namespace ProjectThree
 
                         if (temp != Tagstack.Peek().getSentence() || Tagstack.Count == 0)
                         {
-                            // Console.Write("Inconsistent, either opening tag is missing!\n");
-                            // Console.Write("Or tags in stack missing closing tag!\n");
 
                             //we first try to find opening tag for the closing tag, if it exists
                             //but very far behind in stack, so we add closing tags
@@ -327,17 +373,13 @@ namespace ProjectThree
 
                             //if not, then it is non existent, we create an opening tag for it
 
-                            //if the stack is originally empty, we just add the opening tag and 
+                            //if the stack is originally empty, we just add the opening tag and
                             //then the closing tag
 
                             if (Tagstack.Count == 0) //empty stack, so opening tag is missing.
                             {
                                 //add opening tag for the current closing tag
                                 //then add the closing tag
-
-                                // Console.Write("Found empty Stack, Adding new Opening Tag\n");
-
-                              
 
                                 resizeArraybyOne(ref XML_array, XML_array.Length, ref OpeningTagNumber, temp);
                                 XML_index++;
@@ -365,20 +407,19 @@ namespace ProjectThree
                                 {
                                     while (Tagstack.Count != 0 && Tagstack.Peek().getSentence().Trim() != temp.Trim())
                                     {
-                                        
 
                                         //adding closing tags to current tags until we find
                                         //opening tag for current closing tag
                                         //if we find it, we exit
                                         temp2 = Tagstack.Peek().getSentence();
                                         int index2 = Tagstack.Peek().getIndex();
+                                        int LineNum = Tagstack.Peek().getLineNumber();
+
+                                        addtoList(ref errorList, LineNum, temp2.Substring(0, 1) + "/" + temp2.Substring(1), "Missing Closing Tag");
+
                                         resizeArraybyOne(ref XML_array, XML_array.Length, ref index2, temp2.Substring(0, 1) + "/" + temp2.Substring(1));
                                         XML_index++;
                                         OpeningTagNumber++;
-
-                                        //***********************//
-
-
                                         int current_index = Tagstack.Peek().getIndex() + 1;
                                         Tagstack.Pop();
                                         if (Tagstack.Count != 0) //test if also the last element in the final array is a string or not
@@ -414,6 +455,7 @@ namespace ProjectThree
                                             if (XML_array[index - 1][0] == '<')
                                             {
                                                 Tagstack.Peek().setIndex(current_index);
+
                                             }
                                         }
                                         temp = "";
@@ -425,6 +467,9 @@ namespace ProjectThree
 
                                 else //empty stack, so opening tag is missing.
                                 {
+
+
+                                    addtoList(ref errorList, LineNumber, temp, "Missing Opening Tag");
 
                                     //add opening tag and closing tag.
                                     resizeArraybyOne(ref XML_array, XML_array.Length, ref OpeningTagNumber, temp);
@@ -459,6 +504,7 @@ namespace ProjectThree
                                 if (XML_array[index - 1][0] == '<')
                                 {
                                     Tagstack.Peek().setIndex(current_index);
+
                                 }
                             }
                             temp = "";
@@ -474,11 +520,13 @@ namespace ProjectThree
                     //needed for the final array
                     while (j != sentence.Trim().Length && sentence[j] != '<')
                     {
+                        if (sentence[j] == '\n')
+                        {
+                            j++;
+                            LineNumber++;
+                            continue;
+                        }
                         temp += sentence[j];
-                        // if(sentence[j] == ',')
-                        // {
-                        //     temp+="\n";
-                        // }
                         j++;
                     }
 
@@ -509,64 +557,56 @@ namespace ProjectThree
                 }
             }
 
+            #endregion
 
 
-
-
-            if (Tagstack.Count == 0)
+            #region finishing
+            //After finishing, if there are tags still in stack we add them
+            while (Tagstack.Count != 0)
             {
-                Console.WriteLine("All good!");
-            }
-            else
-            {
-                Console.WriteLine("Missing Closing Tags!");
-                while (Tagstack.Count != 0)
+                temp = Tagstack.Peek().getSentence();
+                int index = Tagstack.Peek().getIndex();
+                int LineNum = Tagstack.Peek().getLineNumber();
+
+                addtoList(ref errorList, LineNum, temp.Substring(0, 1) + "/" + temp.Substring(1), "Missing Closing Tag");
+
+                resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
+                OpeningTagNumber++;
+                int current_index = Tagstack.Peek().getIndex() + 1;
+                string current_Tag = Tagstack.Peek().getSentence();
+                Tagstack.Pop();
+                if (Tagstack.Count != 0)
                 {
-                    temp = Tagstack.Peek().getSentence();
-                    int index = Tagstack.Peek().getIndex();
-                    Console.WriteLine($"{temp} index is {index} and Length is {XML_array.Length}");
-                    resizeArraybyOne(ref XML_array, XML_array.Length, ref index, temp.Substring(0, 1) + "/" + temp.Substring(1));
-                    
-
-                    OpeningTagNumber++;
-                    int current_index = Tagstack.Peek().getIndex() + 1;
-                    string current_Tag = Tagstack.Peek().getSentence();
-                    Tagstack.Pop();
-
-                    
-                    if (Tagstack.Count != 0)
+                    int ind = Tagstack.Peek().getIndex();
+                    if (XML_array[ind - 1][0] == '<')
                     {
-                        int ind = Tagstack.Peek().getIndex();
-                        if (XML_array[ind - 1][0] == '<')
+                        if (current_Tag == XML_array[XML_index])
                         {
-                            if (current_Tag == XML_array[XML_index])
-                            {
-                                Tagstack.Peek().setIndex(current_index);
-                            }
-                            else
-                            {
-                                Tagstack.Peek().setIndex(XML_index);
-                            }
+                            Tagstack.Peek().setIndex(current_index);
+                        }
+                        else
+                        {
+                            Tagstack.Peek().setIndex(XML_index);
                         }
                     }
-                    XML_index++;
                 }
+                XML_index++;
             }
 
-
-
-            printArray(XML_array, XML_index);
+            #endregion
 
             string finalXMLString = "";
             //to group all of them again
 
-            for(int i = 0;i < XML_index;i++)
+            for (int i = 0; i < XML_index; i++)
             {
-                finalXMLString+= XML_array[i];
+                finalXMLString += XML_array[i];
+                if (i != XML_index - 1)
+                {
+                    finalXMLString += "\n";
+                }
             }
 
-            Console.WriteLine(finalXMLString);
-            File.WriteAllText("Output.xml", finalXMLString);
         }
     }
 }
